@@ -9,6 +9,7 @@ object ApplicationId {
 object Modules {
     const val app = ":app"
     const val core = ":core"
+    const val datasource = ":datasource"
 }
 
 object Releases {
