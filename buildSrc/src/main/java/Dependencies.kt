@@ -1,3 +1,6 @@
+object Environment {
+    const val BASE_URL = "\"\""
+}
 
 object ApplicationId {
     const val id = "com.irfan.androidtiket"
@@ -5,6 +8,7 @@ object ApplicationId {
 
 object Modules {
     const val app = ":app"
+    const val core = ":core"
 }
 
 object Releases {
