@@ -1,5 +1,5 @@
 object Environment {
-    const val BASE_URL = "\"\""
+    const val BASE_URL = "\"https://api.github.com/\""
 }
 
 object ApplicationId {
@@ -10,6 +10,7 @@ object Modules {
     const val app = ":app"
     const val core = ":core"
     const val datasource = ":datasource"
+    const val home = ":home"
 }
 
 object Releases {
@@ -28,7 +29,7 @@ object Versions {
     const val appCompat = "1.2.0"
     const val constraintLayout = "2.0.4"
     const val recyclerview = "1.0.0"
-    const val glide = "4.0.0"
+    const val glide = "4.12.0"
     const val materialDesign = "1.1.0"
     const val retrofit = "2.9.0"
     const val retrofitCoroutinesAdapter = "0.9.2"
@@ -69,7 +70,6 @@ object Versions {
 object Dependencies {
     //glide
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
-    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
 
     //koin
     const val koinCore = "org.koin:koin-core:${Versions.koin}"

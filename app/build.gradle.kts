@@ -35,4 +35,5 @@ android {
 dependencies {
     implementation(project(Modules.core))
     implementation(project(Modules.datasource))
+    implementation(project(Modules.home))
 }

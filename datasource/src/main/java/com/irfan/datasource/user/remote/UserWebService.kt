@@ -9,6 +9,6 @@ interface UserWebService {
 
     @GET("search/users")
     @Headers("Content-Type: application/json")
-    suspend fun getUser(@Query("page") requestPage: Int): UserResponse
+    suspend fun getUser(@Query("q") q: String, @Query("page") page: Int, @Query("per_page") perPage: Int): UserResponse
 
 }

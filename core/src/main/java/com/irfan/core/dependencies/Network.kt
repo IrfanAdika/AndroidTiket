@@ -41,7 +41,6 @@ val networkModule = module {
                 val originalRequest = chain.request()
 
                 val urlWithQueryParams = originalRequest.url.newBuilder()
-                    .addQueryParameter("api_key", API_KEY)
                     .build()
 
                 chain.proceed(

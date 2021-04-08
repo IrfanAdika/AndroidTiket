@@ -52,6 +52,13 @@ dependencies {
     api(Dependencies.swipeRefreshLayout)
     api(Dependencies.palette)
 
+    // Navigation
+    api(Dependencies.navigationFragmentKtx)
+    api(Dependencies.navigationUiKtx)
+
+    // Glide
+    api(Dependencies.glide)
+
     // KTX
     api(Dependencies.ktx_Fragment)
     api(Dependencies.ktx_Palette)

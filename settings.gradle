@@ -1,3 +1,4 @@
+include ':home'
 include ':datasource'
 include ':core'
 include ':app'
