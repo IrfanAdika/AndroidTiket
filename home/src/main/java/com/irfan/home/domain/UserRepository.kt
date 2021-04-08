@@ -13,31 +13,37 @@ class UserRepository (
     private val remote: UserDomain.Remote
 ) : UserDomain.Repository {
 
-    private var currentPage: Int = 0
     private var dataItems: MutableList<UserUIModel> = mutableListOf()
 
     override suspend fun getUser(
         q: String,
         page: Int,
-        perPage: Int
-    ) =
+        perPage: Int,
+        isSearch: Boolean
+    ): Flow<Result<Pagination.Result<UserUIModel>>> =
         flow<Result<Pagination.Result<UserUIModel>>> {
-            val nextPage = currentPage + 1
-            val apiResult = remote.getUser(q, page, perPage)
+            if (isSearch) {
+                dataItems.clear()
+            }
+            val apiResult = remote.getUser(q, page, 10)
             when (apiResult) {
 
                 is DataResult.Success -> {
-                    val movieUiModels = apiResult.data.items.map { UserUIModel(it) }
+                    val userUIModel = apiResult.data.items.map { UserUIModel(it) }
 
-                    currentPage = 1
-                    dataItems.addAll(movieUiModels)
+                    dataItems.addAll(userUIModel)
 
                     // Post Pagination Success
                     emitSuccess(
-                        Pagination.Result.Append(
-                            allElements = dataItems,
-                            newPage = movieUiModels
-                        )
+                        if (isSearch) {
+                            Pagination.Result.Replace(newElements = dataItems)
+                        } else {
+                            Pagination.Result.Append(
+                                allElements = dataItems,
+                                newPage = userUIModel
+                            )
+                        }
+
                     )
                 }
 

@@ -15,10 +15,7 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-private const val BASE_URL = "https://api.themoviedb.org/"
 private const val USE_INTERCEPTOR = "useInterceptor"
-
-private const val API_KEY = "27f7494f349b2950f4a6c3539034f6b7"
 
 val networkModule = module {
 
@@ -29,7 +26,7 @@ val networkModule = module {
     single<Interceptor> { StethoInterceptor() }
 
     /** Base URL for Retrofit **/
-    single(qualifier = StringQualifier(BASE_URL)) { BuildConfig.BASE_URL }
+    single(qualifier = StringQualifier(BuildConfig.BASE_URL)) { BuildConfig.BASE_URL }
 
     /** Use the Stetho interceptor **/
     single(qualifier = StringQualifier(USE_INTERCEPTOR)) { BuildConfig.DEBUG }
@@ -73,7 +70,7 @@ val networkModule = module {
     /** Retrofit **/
     single {
         Retrofit.Builder().apply {
-            baseUrl(get<String>(qualifier = StringQualifier(BASE_URL)))
+            baseUrl(get<String>(qualifier = StringQualifier(BuildConfig.BASE_URL)))
             client(get())
             addCallAdapterFactory(get())
             addConverterFactory(get())

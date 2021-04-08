@@ -10,10 +10,10 @@ import kotlinx.coroutines.flow.Flow
 interface UserDomain {
 
     interface Repository {
-        suspend fun getUser(q: String = "", page: Int = 1, perPage: Int = 100): Flow<Result<Pagination.Result<UserUIModel>>>
+        suspend fun getUser(q: String, page: Int, perPage: Int, isSearch: Boolean): Flow<Result<Pagination.Result<UserUIModel>>>
     }
 
     interface Remote {
-        suspend fun getUser(q: String = "", page: Int = 1, perPage: Int = 100): DataResult<UserResponse>
+        suspend fun getUser(q: String, page: Int, perPage: Int): DataResult<UserResponse>
     }
 }

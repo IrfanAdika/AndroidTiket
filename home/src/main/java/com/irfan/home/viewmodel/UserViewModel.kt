@@ -24,15 +24,15 @@ class UserViewModel (
     /** Exposed LiveData **/
     val userData: LiveData<Result<Pagination.Result<UserUIModel>>> = _userData
 
-    fun getMovies(q: String = "", page: Int = 1, perPage: Int = 100) {
+    fun getUser(q: String, page: Int) {
         if (_userData.hasValue()) return
-        getMoreMovies(q, page, perPage)
+        getMoreUser(q, page)
     }
 
-    fun getMoreMovies(q: String = "", page: Int = 1, perPage: Int = 100) {
+    fun getMoreUser(q: String, page: Int, isSearch: Boolean = false) {
         _userData.setLoading(postValue = true)
         launchOnMain {
-            repository.getUser(q, page, perPage)
+            repository.getUser(q, page, 10, isSearch)
                 .flowOnBack(dispatcher)
                 .collectOn(_userData)
         }

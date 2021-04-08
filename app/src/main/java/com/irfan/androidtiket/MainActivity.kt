@@ -1,6 +1,5 @@
 package com.irfan.androidtiket
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.FragmentNavigator
 import com.irfan.core.ui.BaseActivity
@@ -12,7 +11,7 @@ class MainActivity : BaseActivity(R.layout.activity_main), HomeFragment.UserList
         super.onCreate(savedInstanceState)
     }
 
-    override fun onMovieSelected(model: UserUIModel, navigatorExtras: FragmentNavigator.Extras) {
+    override fun onUserSelected(model: UserUIModel, navigatorExtras: FragmentNavigator.Extras) {
 
     }
 }
